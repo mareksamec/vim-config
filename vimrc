@@ -1,51 +1,26 @@
-"Call plug#begin('~/vim/plugged') 
-"Plug 'vim-airline/vim-airline' 
-"Plug 'vim-airline/vim-airline-themes' 
-"Plug 'vim-scripts/XMLExpander' 
-"Plug 'Chiel92/vim-autoformat' 
-"Plug 'chrisbra/vim-show-char' 
-"Plug 'junegunn/fzf.vim' 
-"Plug 'junegunn/fzf' 
-"Plug 'scrooloose/nerdtree' 
-"call plug#end() 
-"Other plugins: 
-" To display help for vim whitespace plugin type :h ShowWhitespace.txt 
 "------------ MY CUSTOMIZATIONS ----------------- 
+
+"-------------FORMATTING-------------------------
+"Line numbers, backspace, whitespace chars, formatting
+
+set encoding=utf-8 
 set number 
 set backspace=indent,eol,start 
-
-"This changes the tab mapping to ?\ and end of line mapping to ¬ 
 set listchars=space:·,tab:>\-,eol:¬ 
-
-
-"set term=win32 
-"s 
-set directory=/c/Users/msamec/Documents/temp// 
-set shellslash 
-"set directory="C:\Temp" 
+set fileformat=unix 
+"set fileformats=dos 
 syntax on 
- 
-" This will turn of the line wrapping, CAREFUL, the lines will be out of screen and no horizontal scrollbar is visibile in the command line vim. 
+"-- This will turn of the line wrapping, CAREFUL, the lines will be out of screen and no horizontal scrollbar is visibile in the command line vim. 
 "set nowrap 
 set linebreak 
- 
-"This is to set default line endings to dos style [CR][LF] /n 
-"set fileformats=unix,dos 
-set fileformat=unix 
- 
-"--- Airline 
-set encoding=utf-8 
-"let g:airline_powerline_fonts = 1 
-set guifont=Fira\ Mono\ Medium\ for\ Powerline:h9 
- 
+
+"-------------VIM SETTINGS (tmp, backups, interface etc...)--
+" -- Needed for tmp files to work on Windows, the tmp files are saved to specified folder
+set directory=/c/Users/msamec/Documents/temp// 
+set shellslash 
 " Auto identation 
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null 
  
-"Formatting plugins for vim-autoformater 
-let g:formatterpath = ["%CMDER_ROOT%\vendor\tidy"] 
- 
-" Tab settings 
-"this enables tabline list in the top with list of the open files 
 "use :tabe <filename> to open new files 
 :set tabline=%!MyTabLine() 
  
@@ -72,10 +47,3 @@ noremap <C-h> :N<CR>
 "Switch to next file buffer (seems windows vim uses buffers in default) 
 nnoremap <C-n> :bnext<CR> 
 nnoremap <C-p> :bprevious<CR> 
- 
-" # UNUSED MAPPINGS 
-"map <F2> :set list <bar> :e ++ff=unix<CR> 
-"map <F3> :set nolist <bar> :e ++ff=dos<CR> 
-"noremap <F5> :!tidy -xml -q -i % 
-"noremap <F6> :Autoformat<CR> 
-"noremap <F7> :!tidy -xml -q -i %<CR><L><CR><bar>:e 
